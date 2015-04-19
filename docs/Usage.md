@@ -4,6 +4,8 @@ The **Usage Guide** walks through a complete grading process.  It assumes you ha
 
 ### Create destination column for grades in Blackboard
 
+See the [Blackboard Guide](Blackboard.md) for a detailed walkthrough of the Blackboard Process.
+
 In Blackboard Grade Center, create a column for the exam.
 
 - Choose name ("Midterm")
