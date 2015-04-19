@@ -1,1 +1,1 @@
-recursive-include skel *
+recursive-include bsb/skel *
