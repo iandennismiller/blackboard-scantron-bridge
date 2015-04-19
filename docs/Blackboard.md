@@ -18,6 +18,14 @@ The **Blackboard Guide** walks through common operations with Blackboard.  There
 
 ![Show Column Form](images/show-column-form.png)
 
+### Work Offline
+
+![Work Offline](images/work-offline.png)
+
+### Download Grades
+
+![Download Grades](images/download-grades.form.png)
+
 ## Next Steps
 
 To use Blackboard with BSB, follow the [Usage Guide](Usage.md).
