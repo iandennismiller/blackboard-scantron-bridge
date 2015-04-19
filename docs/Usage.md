@@ -20,11 +20,11 @@ Import the blackboard grade center "offline work" spreadsheet. Copy that file in
 
 correct any errors in the exam (such as refunding points for bad questions). this must be applied on a per-version basis, because the questions will be different
 
-### Combine the versions
-
 ### Determine spreadsheet parameters
 
 evaluate the scantron input and set "column_to_replace" and "unique_colnames" below
+
+    bsb-dimensions.sh
 
 which column number on blackboard needs to be replaced with scantron results? this corresponds to the newly-created column in blackboard
 
@@ -38,7 +38,11 @@ copy the column names
 
 ### Correct student ID entry errors
 
+    bsb-students.sh
+
 ### Manually add any students who completed makeup exams or whatever
+
+Edit the file R/students.R
 
 ### Finalize
 
@@ -46,6 +50,6 @@ copy the column names
 - replace the proper column
 - export to a new spreadsheet
 
+    bsb-finalize.sh
+
 ### Upload new spreadsheet
-
-
