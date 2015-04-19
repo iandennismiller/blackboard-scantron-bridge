@@ -2,7 +2,13 @@
 
 The **Setup Guide** walks through the creation of a new exam grading project.  It assumes you have already [installed the system](Install.md).
 
-### Create a `marking` folder
+### Initialize a project.
+
+First, be sure you are in the Python virtual environment
+
+    workon exams
+
+Then, issue `bsb-init.sh` to create a project folder called `marking`.
 
     bsb-init.sh
 
