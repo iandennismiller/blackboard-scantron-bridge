@@ -1,6 +1,6 @@
 # BSB: Usage
 
-The **Usage Guide** walks through a complete grading process.  It assumes you have already [installed the system]() and you have already [setup a project]().
+The **Usage Guide** walks through a complete grading process.  It assumes you have already [installed the system](Install.md) and you have already [setup a project](Setup.md).
 
 ### Create destination column for grades in Blackboard
 

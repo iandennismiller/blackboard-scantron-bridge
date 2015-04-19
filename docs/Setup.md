@@ -1,7 +1,13 @@
 # BSB: Setup
 
-The **Setup Guide** walks through the creation of a new exam grading project.  It assumes you have already [installed the system]().
+The **Setup Guide** walks through the creation of a new exam grading project.  It assumes you have already [installed the system](Install.md).
 
-### Next steps
+### Create a `marking` folder
 
-Now that you have a grading project, you can read the [Usage Guide](docs/Usage.md) to grade an exam.
+    bsb-init.sh
+
+There is now a folder called `marking` that is used for grading your exam.
+
+## Next steps
+
+Now that you have a grading project, you can read the [Usage Guide](Usage.md) to grade an exam.
