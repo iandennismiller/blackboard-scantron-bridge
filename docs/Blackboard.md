@@ -20,11 +20,11 @@ The **Blackboard Guide** walks through common operations with Blackboard.  There
 
 ### Work Offline
 
-![Work Offline](images/work-offline.png)
+![Work Offline](images/work-offline-download.png)
 
 ### Download Grades
 
-![Download Grades](images/download-grades.form.png)
+![Download Grades](images/download-grades-form.png)
 
 ## Next Steps
 
