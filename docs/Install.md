@@ -28,10 +28,10 @@ To access the virtual environment in the future, use the virtualenvwrapper `work
 
 Now you have access to the following BSB commands:
 
-    - `bsb-init.sh`
-    - `bsb-dimensions.sh`
-    - `bsb-students.sh`
-    - `bsb-finalize.sh`
+- `bsb-init.sh`
+- `bsb-dimensions.sh`
+- `bsb-students.sh`
+- `bsb-finalize.sh`
 
 ## Next steps
 
