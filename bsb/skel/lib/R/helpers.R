@@ -29,7 +29,7 @@ missing_exams = function(scantrons, blackboard) {
 }
 
 find_entry_errors = function(scantrons, blackboard) {
-  cat("figure out who entered a student ID that is not in the spreadsheet from blackboard\n")  
+  cat("figure out who entered a student ID that is not in the spreadsheet from blackboard\n")
   entered_ids = scantrons[["ID"]]
   not_found = entered_ids[!is.element(entered_ids, blackboard[["Student.ID"]])]
   if (length(not_found)>0) {
@@ -42,6 +42,7 @@ find_entry_errors = function(scantrons, blackboard) {
       results = find_student(student_id, blackboard, last_name)
       cat("students in Blackboard with same last name:", "\n")
       print(results[c("Last.Name", "First.Name", "Student.ID")])
+      cat("\n")
     }
   }
 }
@@ -105,4 +106,3 @@ finalize = function(scantrons, blackboard, column_to_replace, to_export, unique_
   to_export = merge_exam(scantrons, blackboard, column_to_replace)
   export_exam(to_export, unique_colnames)
 }
-

@@ -10,3 +10,4 @@ version_c = read.csv("data/scantron/scantron-version-c.csv")
 
 # combine the scantron versions
 scantrons = rbind(version_a, version_b, version_c)
+scantrons = na.omit(scantrons)
