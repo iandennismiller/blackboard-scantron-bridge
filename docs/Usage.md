@@ -48,6 +48,8 @@ One of the most common data entry problems is when students bubble in their own 
 
 Edit the file `R/students.R` and figure out which student IDs must be fixed.  Also, if there are student scores to manually add, this is a good time to do it.
 
+Repeatedly run `bsb-students.sh` while updating `R/students.R` in order to fix all student ID problems.
+
 ### Finalize
 
 Create the file `data/blackboard/upload.csv` that can be sent directly to Blackboard.
