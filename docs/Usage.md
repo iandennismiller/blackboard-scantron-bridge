@@ -18,7 +18,9 @@ Import the blackboard grade center "offline work" spreadsheet. Copy that file in
 
 ### Prepare the scantron grade CSV files
 
-Correct any errors in the exam (such as refunding points for bad questions). This must be applied on a per-version basis, because the questions will be different
+Correct any errors in the exam (such as refunding points for bad questions). This must be applied on a per-version basis, because the questions will be different.
+
+You must edit `R/loading.R` to indicate where your spreadsheets are.  You should place them into `data/scantron` to save yourself some typing.
 
 ### Determine spreadsheet parameters
 
