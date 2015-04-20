@@ -1,8 +1,8 @@
 # BSB: blackboard-scantron-bridge
 
 # start from scratch
-source("lib/R/helpers.R")
 try(clean_env(),TRUE)
+source("lib/R/helpers.R")
 
 # Load scantrons and blackboard grades
 source("R/loading.R")
@@ -18,6 +18,8 @@ source("R/spreadsheet.R")
 
 # Fix student data
 source("R/students.R")
+missing_exams(scantrons, blackboard)
+find_entry_errors(scantrons, blackboard)
 
 # Finalize grades
 finalize(

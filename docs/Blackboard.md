@@ -26,6 +26,10 @@ The **Blackboard Guide** walks through common operations with Blackboard.  There
 
 ![Download Grades](images/download-grades-form.png)
 
+### Upload Grades
+
+![Upload Grades](images/offline-upload.png)
+
 ## Next Steps
 
 To use Blackboard with BSB, follow the [Usage Guide](Usage.md).

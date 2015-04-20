@@ -16,7 +16,7 @@ In Blackboard Grade Center, create a column for the exam.
 
 Import the blackboard grade center "offline work" spreadsheet. Copy that file into the blackboard path.
 
-    cp ~/Download/*.xls blackboard/download.xls
+    cp ~/Downloads/*.xls data/blackboard/download.xls
 
 ### Prepare the scantron grade CSV files
 

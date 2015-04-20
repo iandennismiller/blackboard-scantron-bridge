@@ -1,7 +1,7 @@
 # BSB: blackboard-scantron-bridge
 
-library(gdata)
-library(data.table)
+library(gdata, quietly=T, warn.conflicts=F, verbose=F)
+library(data.table, quietly=T, warn.conflicts=F, verbose=F)
 
 clean_env = function() {
   items = ls(envir=.GlobalEnv)
@@ -10,20 +10,38 @@ clean_env = function() {
   rm(list=filtered, envir=.GlobalEnv)
 }
 
-find_student = function(student_id, scantrons, blackboard) {
-  first_name = as.character(scantrons[scantrons[["ID"]]==student_id,"First.Name"])
-  last_name = as.character(scantrons[scantrons[["ID"]]==student_id,"Last.Name"])
+find_student = function(student_id, blackboard) {
   found = blackboard[toupper(blackboard[["Last.Name"]])==last_name,]
-  return(c(last_name, first_name, found[["Student.ID"]]))
+  return(found)
+}
+
+# which students are still listed in Blackboard but have no scantrons?
+missing_exams = function(scantrons, blackboard) {
+  entered_ids = blackboard[["Student.ID"]]
+  not_found = entered_ids[!is.element(entered_ids, scantrons[["ID"]])]
+  results = data.frame()
+  if (length(not_found)>0) {
+    for (student_id in not_found) {
+      results = rbind(results, blackboard[blackboard$Student.ID==student_id,])
+    }
+  }
+  print(results[c("Last.Name", "First.Name", "Student.ID")])
 }
 
 find_entry_errors = function(scantrons, blackboard) {
+  cat("figure out who entered a student ID that is not in the spreadsheet from blackboard\n")  
   entered_ids = scantrons[["ID"]]
   not_found = entered_ids[!is.element(entered_ids, blackboard[["Student.ID"]])]
-  if (!is.na(not_found)) {
+  if (length(not_found)>0) {
     for (student_id in not_found) {
-      cat("official data:", find_student(student_id, scantrons, blackboard), "\n")
-      cat("incorrect entry:", student_id, "\n")
+      first_name = as.character(scantrons[scantrons[["ID"]]==student_id,"First.Name"])
+      last_name = as.character(scantrons[scantrons[["ID"]]==student_id,"Last.Name"])
+      cat("scantron name:", last_name, ",", first_name, "\n")
+      cat("scantron ID:", student_id, "\n")
+
+      results = find_student(student_id, blackboard)
+      cat("students in Blackboard with same last name:", "\n")
+      print(results[c("Last.Name", "First.Name", "Student.ID")])
     }
   }
 }
@@ -57,7 +75,7 @@ export_exam = function(to_export, unique_colnames) {
   )
 
   write.table(to_export,
-              file="blackboard/temp-utf8.csv",
+              file="data/blackboard/temp-utf8.csv",
               sep="\t",
               quote=TRUE,
               na="",
@@ -65,26 +83,20 @@ export_exam = function(to_export, unique_colnames) {
               col.names=c(blackboard_colnames, unique_colnames),
               fileEncoding = "UTF-8")
 
-  cat('\xFF\xFE', file = (con <- file("blackboard/upload.csv", "w"))); close(con)
-  system("iconv -f UTF-8 -t UTF-16LE blackboard/temp-utf8.csv >> blackboard/upload.csv && rm blackboard/temp-utf8.csv")
+  cat('\xFF\xFE', file = (con <- file("data/blackboard/upload.csv", "w"))); close(con)
+  system("iconv -f UTF-8 -t UTF-16LE data/blackboard/temp-utf8.csv >> data/blackboard/upload.csv && rm data/blackboard/temp-utf8.csv")
 }
 
-evaluate = function(scantrons, blackboard) {
-  cat("figure out who entered a student ID that is not in the spreadsheet from blackboard\n")
-  # these students need to have their IDs manually changed.
-  find_entry_errors(scantrons, blackboard)
+dimensions = function(blackboard, scantrons) {
+  print("Scantrons")
+  print(dim(scantrons))
+  print(head(scantrons, n=1))
+
+  print("Blackboard")
+  system('head -n1 data/blackboard/download.xls | tail -c +3 | cut -f7- | tr "\t" "," | sed -e "s/,/,@/g" | tr @ "\n" ')
 
   # determine the column that needs to be replaced on blackboard
   print(names(blackboard))
-}
-
-dimensions = function() {
-  print("Scantrons")
-  print(dim(scantrons))
-  print(head(scantrons))
-
-  print("Blackboard")
-  print(head(blackboard))
 }
 
 # merge the scantron results, replace the proper column, and export
@@ -93,3 +105,4 @@ finalize = function(scantrons, blackboard, column_to_replace, to_export, unique_
   to_export = merge_exam(scantrons, blackboard, column_to_replace)
   export_exam(to_export, unique_colnames)
 }
+
