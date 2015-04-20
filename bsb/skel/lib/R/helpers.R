@@ -10,7 +10,7 @@ clean_env = function() {
   rm(list=filtered, envir=.GlobalEnv)
 }
 
-find_student = function(student_id, blackboard) {
+find_student = function(student_id, blackboard, last_name) {
   found = blackboard[toupper(blackboard[["Last.Name"]])==last_name,]
   return(found)
 }
@@ -39,7 +39,7 @@ find_entry_errors = function(scantrons, blackboard) {
       cat("scantron name:", last_name, ",", first_name, "\n")
       cat("scantron ID:", student_id, "\n")
 
-      results = find_student(student_id, blackboard)
+      results = find_student(student_id, blackboard, last_name)
       cat("students in Blackboard with same last name:", "\n")
       print(results[c("Last.Name", "First.Name", "Student.ID")])
     }
