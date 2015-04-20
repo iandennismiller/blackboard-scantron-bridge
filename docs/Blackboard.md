@@ -2,31 +2,39 @@
 
 The **Blackboard Guide** walks through common operations with Blackboard.  There are several complex processes the Blackboard must facilitate, and there are so many irregular options that it is confusing.
 
-### Open the Full Grade Center
+- [Open the Full Grade Center](#open-the-full-grade-center)
+- [Create a Column](#create-a-column)
+- [Add Column Details](#add-column-details)
+- [Do not show column](#do-not-show-column)
+- [Work Offline](#work-offline)
+- [Download Grades](#download-grades)
+- [Upload Grades](#upload-grades)
+
+## Open the Full Grade Center
 
 ![Grade Center](images/grade-center.png)
 
-### Create a Column
+## Create a Column
 
 ![Create Column](images/create-column.png)
 
-### Add Column Details
+## Add Column Details
 
 ![Create Column Form](images/create-column-form.png)
 
-### Do not show column
+## Do not show column
 
 ![Show Column Form](images/show-column-form.png)
 
-### Work Offline
+## Work Offline
 
 ![Work Offline](images/work-offline-download.png)
 
-### Download Grades
+## Download Grades
 
 ![Download Grades](images/download-grades-form.png)
 
-### Upload Grades
+## Upload Grades
 
 ![Upload Grades](images/offline-upload.png)
 

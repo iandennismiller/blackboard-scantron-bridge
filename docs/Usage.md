@@ -60,4 +60,4 @@ Refer to the [Blackboard Guide](Blackboard.md) for a screenshot of the upload li
 
 ## Next Steps
 
-You're done!  The grades are online and you can rest easy.
+You're done!  The grades are online and you can rest easy.  If this helped you, then please tell your friends about BSB.  You can also take a look at [Test Maker](http://github.com/iandennismiller/test-maker); it makes perfect multiple choice exams that work great with BSB.
