@@ -30,9 +30,11 @@ Evaluate the scantron and blackboard spreadsheet files.
 
 In the file `R/spreadsheet.R`, edit and set "column_to_replace" and "unique_colnames".
 
-Which column number on blackboard needs to be replaced with scantron results? This corresponds to the newly-created column in blackboard:
+#### column_to_replace
 
-    column_to_replace = 12
+Which column number on blackboard needs to be replaced with scantron results? This corresponds to the newly-created column in blackboard.
+
+#### unique_colnames
 
 What are the names of the blackboard columns that need to be saved?  Copy the column names.
 
