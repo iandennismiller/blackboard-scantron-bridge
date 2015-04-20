@@ -3,6 +3,9 @@
 library(gdata, quietly=T, warn.conflicts=F, verbose=F)
 library(data.table, quietly=T, warn.conflicts=F, verbose=F)
 
+#
+# remove everything from the R environment
+#
 clean_env = function() {
   items = ls(envir=.GlobalEnv)
   filter = 'clean_env|make'
@@ -10,12 +13,17 @@ clean_env = function() {
   rm(list=filtered, envir=.GlobalEnv)
 }
 
+#
+# search for a student according to Last Name
+#
 find_student = function(student_id, blackboard, last_name) {
   found = blackboard[toupper(blackboard[["Last.Name"]])==last_name,]
   return(found)
 }
 
+#
 # which students are still listed in Blackboard but have no scantrons?
+#
 missing_exams = function(scantrons, blackboard) {
   entered_ids = blackboard[["Student.ID"]]
   not_found = entered_ids[!is.element(entered_ids, scantrons[["ID"]])]
@@ -28,6 +36,9 @@ missing_exams = function(scantrons, blackboard) {
   print(results[c("Last.Name", "First.Name", "Student.ID")])
 }
 
+#
+# which students mis-entered their student IDs?
+#
 find_entry_errors = function(scantrons, blackboard) {
   cat("figure out who entered a student ID that is not in the spreadsheet from blackboard\n")
   entered_ids = scantrons[["ID"]]
@@ -47,11 +58,17 @@ find_entry_errors = function(scantrons, blackboard) {
   }
 }
 
+#
+# replace an old ID with a new ID in the scantron
+#
 fix_id = function(scantrons, old_id, new_id) {
   scantrons[scantrons[["ID"]]==old_id,"ID"] = new_id
   return(scantrons)
 }
 
+#
+# merge scantrons with the blackboard spreadsheet
+#
 merge_exam = function(scantrons, blackboard, column_to_replace) {
   id_and_score = subset(scantrons, select=c(ID, Total.Score))
   setnames(id_and_score, "ID", "Student.ID")
@@ -65,6 +82,9 @@ merge_exam = function(scantrons, blackboard, column_to_replace) {
   return(blackboard)
 }
 
+#
+# write the exam to a UTF-16 spreadsheet appropriate for upload to Blackboard
+#
 export_exam = function(to_export, unique_colnames) {
   blackboard_colnames = c(
     "Last Name",
@@ -88,6 +108,9 @@ export_exam = function(to_export, unique_colnames) {
   system("iconv -f UTF-8 -t UTF-16LE data/blackboard/temp-utf8.csv >> data/blackboard/upload.csv && rm data/blackboard/temp-utf8.csv")
 }
 
+#
+# print information that is helpful for determining the dimensions of the spreadsheets
+#
 dimensions = function(blackboard, scantrons) {
   print("Scantrons")
   print(dim(scantrons))
@@ -100,9 +123,31 @@ dimensions = function(blackboard, scantrons) {
   print(names(blackboard))
 }
 
-# merge the scantron results, replace the proper column, and export
+#
+# Command line handler: dimensions
+#
+cmd_spreadsheet = function() {
+  source("R/loading.R")
+  dimensions(blackboard, scantrons);
+}
 
-finalize = function(scantrons, blackboard, column_to_replace, to_export, unique_colnames) {
+#
+# Command line handler: students
+#
+cmd_students = function() {
+  source("R/loading.R")
+  source("R/students.R")
+  missing_exams(scantrons, blackboard)
+  find_entry_errors(scantrons, blackboard)
+}
+
+#
+# Command line handler: finalize
+#
+cmd_finalize = function() {
+  source("R/loading.R")
+  source("R/spreadsheet.R")
+  source("R/students.R")
   to_export = merge_exam(scantrons, blackboard, column_to_replace)
   export_exam(to_export, unique_colnames)
 }

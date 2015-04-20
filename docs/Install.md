@@ -8,12 +8,14 @@ The **Install Guide** walks through the installation of BSB.
 
 ### Pre-requisites
 
-#### Required libraries
+#### Requirements
 
+- Unix-like OS (OS X, BSD, Linux)
 - Python 2.7.x
 - Python pip
 - Python virtualenv
 - Python virtualenvwrapper
+- iconv
 
 #### Installing pre-requisites
 

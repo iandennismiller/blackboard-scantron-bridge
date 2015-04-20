@@ -5,8 +5,10 @@
 **BSB** features:
 
 - detecting students who mis-entered their own IDs
+- support for multiple versions of the exam
 - bulk grade export/import from Blackboard
 - proper handling of spreadsheet encodings (fixes UTF-16 problems)
+- compatible with [Test Maker](http://github.com/iandennismiller/test-maker)
 
 ## Get Started
 

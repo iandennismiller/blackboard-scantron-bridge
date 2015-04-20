@@ -20,38 +20,42 @@ Import the blackboard grade center "offline work" spreadsheet. Copy that file in
 
 ### Prepare the scantron grade CSV files
 
-correct any errors in the exam (such as refunding points for bad questions). this must be applied on a per-version basis, because the questions will be different
+Correct any errors in the exam (such as refunding points for bad questions). This must be applied on a per-version basis, because the questions will be different
 
 ### Determine spreadsheet parameters
 
-evaluate the scantron input and set "column_to_replace" and "unique_colnames" below
+Evaluate the scantron and blackboard spreadsheet files.
 
-    bsb-dimensions.sh
+    bsb-spreadsheet.sh
 
-which column number on blackboard needs to be replaced with scantron results? this corresponds to the newly-created column in blackboard
+In the file `R/spreadsheet.R`, edit and set "column_to_replace" and "unique_colnames".
+
+Which column number on blackboard needs to be replaced with scantron results? This corresponds to the newly-created column in blackboard:
 
     column_to_replace = 12
 
-what are the names of the blackboard columns that need to be saved?
-
-    head blackboard/download.xls
-
-copy the column names
+What are the names of the blackboard columns that need to be saved?  Copy the column names.
 
 ### Correct student ID entry errors
+
+One of the most common data entry problems is when students bubble in their own student IDs incorrectly.  This step makes it easier to find which IDs have exams but aren't listed in blackboard.  This also helps find out which students did not take the exam.
 
     bsb-students.sh
 
 ### Manually add any students who completed makeup exams or whatever
 
-Edit the file R/students.R
+Edit the file `R/students.R` and figure out which student IDs must be fixed.  Also, if there are student scores to manually add, this is a good time to do it.
 
 ### Finalize
 
-- Merge the scantron results
-- replace the proper column
-- export to a new spreadsheet
+Create the file `data/blackboard/upload.csv` that can be sent directly to Blackboard.
 
     bsb-finalize.sh
 
 ### Upload new spreadsheet
+
+Refer to the [Blackboard Guide](Blackboard.md) for a screenshot of the upload link.
+
+## Next Steps
+
+You're done!  The grades are online and you can rest easy.
