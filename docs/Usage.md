@@ -12,9 +12,9 @@ In Blackboard Grade Center, create a column for the exam.
 - Choose and Points Possible
 - Set "show this column to students" to "No."  This should be changed later.
 
-### Gather Blackboard grade center data
+### Download Blackboard grades for "offline work"
 
-Import the blackboard grade center "offline work" spreadsheet. Copy that file into the blackboard path: `data/blackboard/download.xls`.
+Import the blackboard grade center "offline work" spreadsheet. Copy that file into the blackboard path: `data/blackboard/download.xls`.  The [Blackboard Guide](Blackboard.md) also describes this process.
 
 ### Prepare the scantron grade CSV files
 
@@ -42,13 +42,13 @@ One of the most common data entry problems is when students bubble in their own 
 
     bsb-students.sh
 
-### Manually add any students who completed makeup exams or whatever
+### Manually add any students who completed makeup exams
 
 Edit the file `R/students.R` and figure out which student IDs must be fixed.  Also, if there are student scores to manually add, this is a good time to do it.
 
 Repeatedly run `bsb-students.sh` while updating `R/students.R` in order to fix all student ID problems.
 
-### Finalize
+### Export the final spreadsheet
 
 Create the file `data/blackboard/upload.csv` that can be sent directly to Blackboard.
 
