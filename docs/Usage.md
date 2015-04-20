@@ -8,8 +8,8 @@ See the [Blackboard Guide](Blackboard.md) for a detailed walkthrough of the Blac
 
 In Blackboard Grade Center, create a column for the exam.
 
-- Choose name ("Midterm")
-- Choose and Points Possible (50)
+- Choose name
+- Choose and Points Possible
 - Set "show this column to students" to "No."  This should be changed later.
 
 ### Gather Blackboard grade center data
