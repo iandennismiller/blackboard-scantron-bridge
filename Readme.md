@@ -12,9 +12,9 @@
 
 ## Get Started
 
-1. Read the [Install](docs/Install.md) document to set up your environment.
-2. Read the [Setup](docs/Setup.md) guide to create a new grading project.
-3. Read the [Usage](docs/Usage.md) guide to learn how to grade your exam.
+1. [Install BSB](docs/Install.md) in your environment.
+2. [Setup](docs/Setup.md) a new grading project.
+3. [Use BSB](docs/Usage.md) to grade your exam.
 
 ## License
 
